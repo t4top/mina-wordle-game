@@ -1,0 +1,10 @@
+# NodeJS
+node_modules
+build
+.env
+
+# Editor
+.vscode
+
+# System
+.DS_Store
