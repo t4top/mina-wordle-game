@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "start": "npm run build && node .",
+    "dev": "npm run build && node .",
+    "start": "npm run build && pm2 start --name \"mina-wordle-game-oracle\" node -- .",
+    "stop": "pm2 delete mina-wordle-game-oracle",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,6 +32,7 @@
     "@types/koa": "^2.13.5",
     "@types/koa__router": "^12.0.0",
     "@types/node": "^18.11.12",
+    "pm2": "^5.2.2",
     "typescript": "^4.9.4"
   },
   "dependencies": {
