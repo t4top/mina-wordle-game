@@ -10,8 +10,9 @@ const app = new Koa();
 app
   .use(cors())
   .use(router.routes())
-  .use(router.allowedMethods());
+  .use(router.allowedMethods())
 
-// start listening for incoming requests
-console.log(`server listening of port ${port}`);
-app.listen(port);
+  // start listening for incoming requests
+  .listen(port);
+
+console.log(`server listening on port ${port}`);
