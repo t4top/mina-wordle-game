@@ -1,3 +1,3 @@
-import { Add } from './Add.js';
+import { Wordle } from './Wordle.js';
 
-export { Add };
+export { Wordle };
