@@ -1,9 +1,8 @@
 {
   "name": "mina-wordle-game-contracts",
   "version": "0.1.0",
-  "description": "",
-  "author": "",
-  "license": "Apache-2.0",
+  "author": "t4top",
+  "license": "GPL-3.0-or-later",
   "keywords": [
     "mina-zkapp",
     "mina-zk-app",

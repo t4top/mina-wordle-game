@@ -2,6 +2,8 @@
   "name": "mina-wordle-game-ui",
   "version": "0.1.0",
   "private": true,
+  "author": "t4top",
+  "license": "GPL-3.0-or-later",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",

@@ -1,0 +1,25 @@
+{
+  "name": "mina-wordle-game",
+  "version": "0.1.0",
+  "description": "Wordle inspired game for Mina Protocol",
+  "scripts": {
+    "postinstall": "(cd oracle && npm install) && (cd ui && npm install) && (cd contracts && npm install)",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/t4top/mina-wordle-game.git"
+  },
+  "keywords": [
+    "wordle",
+    "mina",
+    "snarkyjs",
+    "zkapp"
+  ],
+  "author": "t4top",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/t4top/mina-wordle-game/issues"
+  },
+  "homepage": "https://github.com/t4top/mina-wordle-game#readme"
+}
