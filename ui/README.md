@@ -1,6 +1,6 @@
 # mina-wordle-game-ui
 
-This is the user interface frontend for the [Mina Wordle Game](../README.md). It is built with `Svelte-Kit` nodejs framework.
+This is the user interface frontend for the [Mina Wordle Game](../). It is built with `Svelte-Kit` nodejs framework.
 
 ## Demo
 

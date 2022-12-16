@@ -2,7 +2,7 @@
 
 An oracle server that returns the New York Times Wordle of the day with a Mina compatible signature scheme.
 
-This is the oracle server backend for the [Mina Wordle Game](../README.md). It returns the New York Times Wordle of the day with a Mina compatible signature scheme. It uses `koa` HTTP middleware framework and `pm2` process manager for nodejs.
+This is the oracle server backend for the [Mina Wordle Game](../). It returns the New York Times Wordle of the day with a Mina compatible signature scheme. It uses `koa` HTTP middleware framework and `pm2` process manager for nodejs.
 
 The oracle server runs on port `3000` by default.
 

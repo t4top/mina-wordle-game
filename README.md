@@ -42,9 +42,9 @@ Below are some of the major features of this zkApp.
 
 This project is divided into 3 parts - ui, contracts and oracle. Clone this repository and follow the steps under each part.
 
-- [ui](./ui/README.md)
-- [contracts](./contracts/README.md)
-- [oracle](./oracle/README.md)
+- [ui](./ui/)
+- [contracts](./contracts/)
+- [oracle](./oracle/)
 
 ## License
 
