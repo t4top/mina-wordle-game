@@ -1,6 +1,6 @@
 # mina-wordle-game-contracts
 
-This is the zkApp smart contract for the [Mina Wordle Game](../). It uses `SnarkyJS` with TypeScript template.
+This is the zkApp smart contract for the [Mina Wordle Game](/). It uses `SnarkyJS` with TypeScript template.
 
 ## Demo
 
