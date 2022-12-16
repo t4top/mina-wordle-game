@@ -1,10 +1,31 @@
-# Mina zkApp for Mina Wordle Game
+# mina-wordle-game-contracts
 
-This template uses TypeScript.
+This is the zkApp smart contract for the [Mina Wordle Game](../README.md). It uses `SnarkyJS` with TypeScript template.
+
+## Demo
+
+A sample zkApp is deployed to Mina Berkeley Testnet. The account is below.
+
+- [B62qo7TsbVEKU2q7md2upZuMwjEizuYcMy5t4FPdmB3YkonZbF5dJSu](https://berkeley.minaexplorer.com/wallet/B62qo7TsbVEKU2q7md2upZuMwjEizuYcMy5t4FPdmB3YkonZbF5dJSu)
 
 ## How to build
 
-```sh
+1. Clone this git repository and change to the contracts directory
+
+```bash
+git clone https://github.com/t4top/mina-wordle-game.git
+cd mina-wordle-game/contracts
+```
+
+2. Install project dependencies
+
+```bash
+npm install
+```
+
+3. Build the zkApp
+
+```bash
 npm run build
 ```
 
@@ -20,7 +41,3 @@ npm run testw # watch mode
 ```sh
 npm run coverage
 ```
-
-## License
-
-[Apache-2.0](LICENSE)
