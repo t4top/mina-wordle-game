@@ -1,0 +1,20 @@
+/* import all global styles */
+
+@require "./normalize"
+@require "./colors"
+@require "./fonts"
+
+body
+  color var(--color_text_primary)
+  background-color var(--color_bg_primary)
+  transition background-color 0.3s
+
+button
+  color var(--color_text_primary)
+
+  &:disabled
+    color var(--color_text_gray)
+
+a
+  text-decoration underline
+  color var(--color_text_primary)

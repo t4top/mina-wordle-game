@@ -1,0 +1,54 @@
+/* color brand and themes */
+
+$clr_white = hsl(0, 0, 100)
+$clr_black = hsl(0, 0, 0)
+$clr_lightblack = hsl(0, 0, 7)
+$clr_lightgray = hsl(214, 9, 84)
+$clr_lightgray_dark1 = hsl(240, 2, 23)
+$clr_lightgray_dark2 = hsl(200, 1, 51)
+$clr_gray = rgb(120, 123, 125)
+$clr_darkgray = hsl(204, 2, 54)
+$clr_green = hsl(115, 29, 53)
+$clr_darkgreen = hsl(115, 29, 43)
+$clr_yellow = hsl(49, 51, 57)
+$clr_darkyellow = hsl(49, 51, 47)
+
+
+:root
+  // text
+  --color_text_primary $clr_black
+  --color_text_secondary $clr_white
+  --color_text_board $clr_white
+  --color_text_gray $clr_gray
+
+  // background
+  --color_bg_primary $clr_white
+  --color_bg_secondary $clr_lightblack
+  --color_bg_gray $clr_gray
+  --color_bg_lightgray $clr_lightgray
+  --color_bg_green $clr_green
+  --color_bg_yellow $clr_yellow
+
+  // border
+  --color_border_lightgray $clr_lightgray
+  --color_border_darkgray $clr_darkgray
+
+:global
+  .theme_dark
+    // text
+    --color_text_primary $clr_white
+    --color_text_secondary $clr_black
+    --color_text_board $clr_white
+    --color_text_gray $clr_gray
+
+    // background
+    --color_bg_primary $clr_lightblack
+    --color_bg_secondary $clr_white
+    --color_bg_gray $clr_lightgray_dark1
+    --color_bg_lightgray $clr_lightgray_dark2
+    --color_bg_green $clr_darkgreen
+    --color_bg_yellow $clr_darkyellow
+
+    // border
+    --color_border_lightgray $clr_lightgray_dark1
+    --color_border_darkgray $clr_darkgray

@@ -1,0 +1,31 @@
+/* global font settings */
+
+// font family
+$ff_default = sans-serif;
+
+:root
+  --font_family_default: $ff_default
+
+body
+  font-family var(--font_family_default)
+
+
+// font sizes
+// Set font size based on screen sizes
+html, body
+  font-size calc(var(--site_font_size, 14) * 1px)
+  @media $mq_sm
+    --site_font_size: 15
+  @media $mq_md
+    --site_font_size: 16
+  @media $mq_lg
+    --site_font_size: 18
+  @media $mq_xl
+    --site_font_size: 20
+  @media $mq_wd
+    --site_font_size: 22
+  @media $mq_xwd
+    --site_font_size: 25
+
+p
+  line-height 1.5

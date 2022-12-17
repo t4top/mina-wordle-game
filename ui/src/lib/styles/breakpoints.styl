@@ -1,0 +1,19 @@
+/* Media query breakpoints */
+
+// mixins
+mx_min_width(width)
+  "only screen and (min-width: " + width + "px)"
+
+// breakpoint pixel values
+breakpoints = {
+              // Default - No need to define. Mobile-first design
+  sm:  576,   // Small - phone in landscape
+  md:  768,   // Medium - tablet
+  lg:  992,   // Large - XGA display
+  xl:  1200,  // Extra large - HD display
+  wd:  1800,  // wide - Full HD display
+  xwd: 2562   // Extra wide - Ultra HD display
+}
+
+for key, value in breakpoints
+  define("$mq_" + key, mx_min_width(value), true)

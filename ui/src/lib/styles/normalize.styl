@@ -1,0 +1,32 @@
+/* revert browser initial settings */
+
+*,
+*::before,
+*::after
+  box-sizing border-box
+  margin 0
+
+html,
+body
+  height 100%
+  margin 0
+
+html
+  scroll-behavior smooth
+  @media screen and (prefers-reduced-motion: reduce)
+    scroll-behavior auto
+
+body
+  width: 100%
+  @supports (-webkit-touch-callout: none)
+    height -webkit-fill-available
+
+a
+  text-decoration none
+
+ol,
+ul
+  list-style-type none
+
+button
+  cursor pointer
