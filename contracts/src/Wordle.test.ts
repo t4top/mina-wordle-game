@@ -15,7 +15,7 @@ import {
 const ORACLE_PUBLIC_KEY =
   'B62qqW3XwzR7K94C7HjiX37ni4yoeycGx5k7DriERn3d4QbuWenJRuB';
 
-const ORACLE_ENDPOINT = 'https://mina-wordle.juxdan.io/wordle/';
+const ORACLE_ENDPOINT = 'https://mina-wordle-oracle.juxdan.io/wordle';
 
 let proofsEnabled = false;
 

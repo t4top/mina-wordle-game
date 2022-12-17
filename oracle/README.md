@@ -10,8 +10,8 @@ The oracle server runs on port `3000` by default.
 
 The following endpoints are available.
 
-- [/wordle](https://mina-wordle.juxdan.io/wordle): returns the secret wordle of the day signed with the oracle server account.
-- /wordle/\<date\>: provides wordle for a specific date. For example, [/wordle/2022-12-15](https://mina-wordle.juxdan.io/wordle/2022-12-15)
+- [/wordle](https://mina-wordle-oracle.juxdan.io/wordle): returns the secret wordle of the day signed with the oracle server account.
+- /wordle/\<date\>: provides wordle for a specific date. For example, [/wordle/2022-12-15](https://mina-wordle-oracle.juxdan.io/wordle/2022-12-15)
 
 ## Setup the configurations
 
