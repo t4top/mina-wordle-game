@@ -4,9 +4,9 @@ This is a Wordle inspired game for Mina Protocol. It is to demonstrate zkApp sma
 
 ## Demo
 
-Please, visit below site.
+A demo zkApp is hosted in below link. Please, visit the site.
 
-- [GitHub Pages](https://t4top.github.io/mina-wordle-game/index.html)
+- [https://mina-wordle.juxdan.io/](https://mina-wordle.juxdan.io/)
 
 ## What is Wordle?
 

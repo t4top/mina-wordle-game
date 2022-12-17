@@ -4,9 +4,9 @@ This is the user interface frontend for the [Mina Wordle Game](../README.md). It
 
 ## Demo
 
-A sample UI is running under the following link.
+A demo UI is running under the following link.
 
-- [GitHub Pages](https://t4top.github.io/mina-wordle-game/index.html)
+- [https://mina-wordle.juxdan.io/](https://mina-wordle.juxdan.io/)
 
 ## How to build
 
