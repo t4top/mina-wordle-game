@@ -1,9 +1,15 @@
 import { secretWord } from "$lib/gamelogic/store";
 import ZkappWorkerClient from "$lib/zkapp/worker_client";
 import { user, transactionFee } from "./user_store";
-import { ZKAPP_CONTRACT_ADDRESS, ORACLE_ENDPOINT } from "./config";
 
 const MINA_SUB_DECIMAL: number = 1e9;
+
+// Endpoint of oracle server
+const ORACLE_ENDPOINT: string = "https://mina-wordle-oracle.juxdan.io/wordle";
+
+// Public Address of the zkApp account
+const ZKAPP_CONTRACT_ADDRESS: string = "B62qo7TsbVEKU2q7md2upZuMwjEizuYcMy5t4FPdmB3YkonZbF5dJSu";
+
 const WALLET_CONNECTED_BEFORE_FLAG: string = "wallet_connected_before";
 
 const mina = (window as any)?.mina;
@@ -71,7 +77,8 @@ export async function callZkPercentile(attempt: number): Promise<number> {
 // fetch secret hidden word of the day from oracle server
 async function getOracleData() {
   try {
-    const res = await fetch(ORACLE_ENDPOINT);
+    const date = new Date().toJSON().slice(0, 10);
+    const res = await fetch(`${ORACLE_ENDPOINT}/${date}`);
     const data = await res.json();
     const secret = data.data.wordle;
     secretWord.set(secret.toUpperCase());
