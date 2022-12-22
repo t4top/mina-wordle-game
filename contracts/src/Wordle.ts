@@ -107,7 +107,7 @@ export class Wordle extends SmartContract {
       );
 
       // sum attempts above and including user's
-      let gteAttempt = attempt.gte(Field(i));
+      let gteAttempt = Field(i).gte(attempt);
 
       sum_upto_user_attempt = Circuit.if(
         gteAttempt,
