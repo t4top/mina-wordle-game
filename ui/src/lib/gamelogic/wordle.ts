@@ -17,7 +17,7 @@ export function keyPressed(key: string) {
       validateGuessWord();
       break;
 
-    case "DELETE":
+    case "BACKSPACE":
       deleteLetter(key);
       break;
 

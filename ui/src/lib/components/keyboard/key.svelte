@@ -1,8 +1,11 @@
 <script lang="ts">
+  import Icon from "$lib/components/icons/icon.svelte";
   import { absentKeys, presentKeys, correctKeys } from "$lib/gamelogic/store";
   import { keyPressed } from "$lib/gamelogic/wordle";
 
   export let key: string;
+
+  $: isBackSpace = key === "BACKSPACE";
 </script>
 
 <button
@@ -10,9 +13,14 @@
   class:absent={$absentKeys.includes(key)}
   class:present={$presentKeys.includes(key)}
   class:correct={$correctKeys.includes(key)}
+  class:backspace={isBackSpace}
   on:click={() => keyPressed(key)}
 >
-  {key}
+  {#if isBackSpace}
+    <Icon name="backspace" title="Backspace" />
+  {:else}
+    {key}
+  {/if}
 </button>
 
 <style lang="stylus">
@@ -45,5 +53,8 @@
     &.correct
       color var(--color_text_board)
       background-color var(--color_bg_green)
+
+    &.backspace
+      padding 0 1.2rem
 
 </style>
