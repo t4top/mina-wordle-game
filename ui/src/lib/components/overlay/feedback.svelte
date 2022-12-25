@@ -14,9 +14,13 @@
 
   function autoShow(gameOver: boolean) {
     if (alreadyShown) return;
+
     if (gameOver) {
-      showFeedback = true;
-      alreadyShown = true;
+      const timeoutId = setTimeout(() => {
+        showFeedback = true;
+        alreadyShown = true;
+        clearTimeout(timeoutId);
+      }, 1000);
     }
   }
 
