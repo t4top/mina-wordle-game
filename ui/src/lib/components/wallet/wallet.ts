@@ -67,6 +67,26 @@ export async function callZkPercentile(attempt: number): Promise<number> {
     .then(eventValue => {
       percentile = Number(eventValue.toString());
     })
+
+    // calculate percentile using on-chain `allAttempts` state
+    // since fetchEvents() is not yet implemented for remote blockchain
+    .then(() => zkClient.getAllAttempts())
+    .then(allAttempts => {
+      let sum_all_attempts: number = 0;
+      let sum_upto_user_attempt: number = 0;
+
+      // userAttempt is 1 origin, decrease by 1 to get array index
+      const userAttempt = attempt - 1;
+
+      allAttempts.forEach((val, idx) => {
+        let remoteVal = Number(val.toString());
+        if (idx === userAttempt) remoteVal += 1;
+        if (idx >= userAttempt) sum_upto_user_attempt += remoteVal;
+        sum_all_attempts += remoteVal;
+      });
+
+      percentile = Math.ceil((sum_upto_user_attempt * 100) / sum_all_attempts) - 1;
+    })
     .catch((e: any) => console.log(e));
 
   return percentile;

@@ -60,6 +60,11 @@ async function getBalance(args: { publicKey58: string }) {
   return JSON.stringify(balance.toJSON());
 }
 
+async function getAllAttempts(args: {}) {
+  const allAttempts = await state.zkapp!.allAttempts.get();
+  return JSON.stringify(allAttempts.value.map(v => v.toJSON()));
+}
+
 async function createVerifyTransaction(args: { date: string; secret: string; signature: any }) {
   const dateField = Encoding.stringToFields(args.date)[0];
   const secretField = Encoding.stringToFields(args.secret)[0];
@@ -91,7 +96,7 @@ async function getTransactionJSON(args: {}) {
 async function fetchEvent(args: {}) {
   let eventValue = Field(60);
 
-  // fetchEvents is not yet implemented in SnarkyJs for remote blockchain.
+  // fetchEvents() is not yet implemented in SnarkyJs for remote blockchain.
   // I will skip below code and just return Field(60) for now
   if (false) {
     const events = await state.zkapp!.fetchEvents();
@@ -113,6 +118,7 @@ const functions = {
   initZkappInstance,
   fetchAccount: _fetchAccount,
   getBalance,
+  getAllAttempts,
   proveTransaction,
   getTransactionJSON,
   fetchEvent,
