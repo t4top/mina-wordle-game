@@ -1,6 +1,5 @@
 import { Mina, isReady, shutdown, PublicKey, fetchAccount, Encoding, Signature, Field } from "snarkyjs";
-// import type { Wordle } from "../../../../contracts/src/Wordle";
-import type { Wordle } from "$lib/contracts/Wordle";
+import type { Wordle } from "./contracts/Wordle";
 
 type Transaction = Awaited<ReturnType<typeof Mina.transaction>>;
 
@@ -31,7 +30,7 @@ async function setActiveInstanceToBerkeley(args: {}) {
 
 async function loadContract(args: {}) {
   console.log("loading contract...");
-  const { Wordle } = await import("$lib/contracts/Wordle");
+  const { Wordle } = await import("./contracts/Wordle");
   state.Wordle = Wordle;
   console.log("done");
 }

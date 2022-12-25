@@ -84,7 +84,7 @@ export class Wordle extends SmartContract {
             let eqAttempt = attempt.equals(Field(i));
             allAttempts.value[i] = Circuit.if(eqAttempt, allAttempts.value[i].add(Field(1)), allAttempts.value[i]);
             // sum attempts above and including user's
-            let gteAttempt = attempt.gte(Field(i));
+            let gteAttempt = Field(i).gte(attempt);
             sum_upto_user_attempt = Circuit.if(gteAttempt, sum_upto_user_attempt.add(allAttempts.value[i]), sum_upto_user_attempt);
             // sum up all positions
             sum_all_attempts = sum_all_attempts.add(allAttempts.value[i]);
