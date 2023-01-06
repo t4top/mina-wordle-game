@@ -10,6 +10,8 @@
   let countdown: string = "";
   let intervalId: NodeJS.Timeout | null = null;
 
+  const TIMEOUT_DELAY: number = 4000;
+
   $: autoShow($userScore.gameOver);
 
   function autoShow(gameOver: boolean) {
@@ -20,7 +22,7 @@
         showFeedback = true;
         alreadyShown = true;
         clearTimeout(timeoutId);
-      }, 1000);
+      }, TIMEOUT_DELAY);
     }
   }
 

@@ -58,3 +58,38 @@ function createUserScore() {
 }
 
 export const userScore = createUserScore();
+
+//--------------------------------------------------
+// store for animation flags
+
+const RESET_FLAG_DELAY: number = 1500;
+
+const animationState = {
+  tileFlash: false as boolean,
+  tileXPos: -1 as number,
+  rowShake: false as boolean,
+  tileFlip: false as boolean,
+  tileBounce: false as boolean
+};
+
+function createAnimation() {
+  const { subscribe, set, update } = writable(animationState);
+
+  let timeoutId: NodeJS.Timeout | null = null;
+  const _clearTimeout = () => timeoutId && clearTimeout(timeoutId);
+
+  return {
+    subscribe,
+
+    set: (value: any) => {
+      update(_ => Object.assign({}, animationState, value));
+
+      _clearTimeout();
+      timeoutId = setTimeout(() => set(animationState), RESET_FLAG_DELAY);
+
+      return () => _clearTimeout();
+    }
+  };
+}
+
+export const animation = createAnimation();
