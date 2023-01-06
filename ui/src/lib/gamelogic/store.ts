@@ -38,7 +38,7 @@ const emptyUserScore = {
 };
 
 function createUserScore() {
-  const { subscribe, set, update } = writable(emptyUserScore);
+  const { subscribe, update } = writable(emptyUserScore);
 
   // success notification remarks. It depends on number of attempts before correct guess
   const remarks: string[] = ["Genius", "Magnificient", "Impressive", "Splendid", "Great", "Phew"];
@@ -51,9 +51,7 @@ function createUserScore() {
     setResult: (attempts: number, won: boolean) =>
       update(old => Object.assign({}, old, { attempts, won, remark: remarks[attempts - 1], gameOver: true })),
 
-    setPercentile: (percentile: number) => update(old => Object.assign({}, old, { percentile })),
-
-    reset: () => set(emptyUserScore)
+    setPercentile: (percentile: number) => update(old => Object.assign({}, old, { percentile }))
   };
 }
 

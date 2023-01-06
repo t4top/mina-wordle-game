@@ -96,7 +96,7 @@
     <section>
       <ul>
         <li><h3>The secret wordle is <span class="wordle">{$secretWord}.</span></h3></li>
-        <li><h3>Try your luck again tomorrow.</h3></li>
+        <li><h3>Try your luck again next time.</h3></li>
       </ul>
     </section>
   {/if}
