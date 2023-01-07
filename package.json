@@ -1,6 +1,6 @@
 {
   "name": "mina-wordle-game",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Wordle inspired game for Mina Protocol",
   "scripts": {
     "postinstall": "(cd oracle && npm install) && (cd contracts && npm install) && (cd ui && npm install)",
