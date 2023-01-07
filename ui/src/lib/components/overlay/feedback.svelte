@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onDestroy, onMount } from "svelte";
   import Icon from "$lib/components/icons/icon.svelte";
   import { userScore, secretWord } from "$lib/gamelogic/store";
   import Popup from "./popup.svelte";
@@ -6,14 +7,22 @@
   let showFeedback: boolean = false;
   let isBusy: boolean = false;
   let alreadyShown: boolean = false;
+  let countdown: string = "";
+  let intervalId: NodeJS.Timeout | null = null;
+
+  const TIMEOUT_DELAY: number = 4000;
 
   $: autoShow($userScore.gameOver);
 
   function autoShow(gameOver: boolean) {
     if (alreadyShown) return;
+
     if (gameOver) {
-      showFeedback = true;
-      alreadyShown = true;
+      const timeoutId = setTimeout(() => {
+        showFeedback = true;
+        alreadyShown = true;
+        clearTimeout(timeoutId);
+      }, TIMEOUT_DELAY);
     }
   }
 
@@ -24,6 +33,28 @@
     userScore.setPercentile(percentile);
     isBusy = false;
   }
+
+  const zeroPad = (num: number, places: number) => String(num).padStart(places, "0");
+
+  onMount(() => {
+    const midnight = new Date();
+    midnight.setHours(24, 0, 0, 0);
+    const midnightTime = midnight.getTime();
+
+    intervalId = setInterval(() => {
+      const now = new Date().getTime();
+      const remain = midnightTime - now;
+
+      const hour = Math.floor(remain / (1000 * 60 * 60));
+      const minute = Math.floor((remain % (1000 * 60 * 60)) / (1000 * 60));
+      const second = Math.floor((remain % (1000 * 60)) / 1000);
+      countdown = `${zeroPad(hour, 2)}:${zeroPad(minute, 2)}:${zeroPad(second, 2)}`;
+    }, 1000);
+  });
+
+  onDestroy(() => {
+    if (intervalId) clearInterval(intervalId);
+  });
 </script>
 
 <button class="icon_button" on:click={() => (showFeedback = $userScore.gameOver)} disabled={!$userScore.gameOver}>
@@ -65,10 +96,16 @@
     <section>
       <ul>
         <li><h3>The secret wordle is <span class="wordle">{$secretWord}.</span></h3></li>
-        <li><h3>Try your luck again tomorrow.</h3></li>
+        <li><h3>Try your luck again next time.</h3></li>
       </ul>
     </section>
   {/if}
+
+  <section class="section_countdown">
+    <div>
+      Next Wordle in {countdown}
+    </div>
+  </section>
 </Popup>
 
 <style lang="stylus">
@@ -105,5 +142,13 @@
   .wordle
     font-weight 700
     text-transform uppercase
+  
+  .section_countdown
+    div
+      text-align center
+      font-weight 700
+      text-transform uppercase
+      padding-top 1rem
+      border-top 1px solid var(--color_border_lightgray)
 
 </style>

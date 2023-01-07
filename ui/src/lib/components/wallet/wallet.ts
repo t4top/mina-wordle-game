@@ -1,9 +1,15 @@
 import { secretWord } from "$lib/gamelogic/store";
 import ZkappWorkerClient from "$lib/zkapp/worker_client";
 import { user, transactionFee } from "./user_store";
-import { ZKAPP_CONTRACT_ADDRESS, ORACLE_ENDPOINT } from "./config";
 
 const MINA_SUB_DECIMAL: number = 1e9;
+
+// Endpoint of oracle server
+const ORACLE_ENDPOINT: string = "https://mina-wordle-oracle.juxdan.io/wordle";
+
+// Public Address of the zkApp account
+const ZKAPP_CONTRACT_ADDRESS: string = "B62qo7TsbVEKU2q7md2upZuMwjEizuYcMy5t4FPdmB3YkonZbF5dJSu";
+
 const WALLET_CONNECTED_BEFORE_FLAG: string = "wallet_connected_before";
 
 const mina = (window as any)?.mina;
@@ -61,6 +67,26 @@ export async function callZkPercentile(attempt: number): Promise<number> {
     .then(eventValue => {
       percentile = Number(eventValue.toString());
     })
+
+    // calculate percentile using on-chain `allAttempts` state
+    // since fetchEvents() is not yet implemented for remote blockchain
+    .then(() => zkClient.getAllAttempts())
+    .then(allAttempts => {
+      let sum_all_attempts: number = 0;
+      let sum_upto_user_attempt: number = 0;
+
+      // userAttempt is 1 origin, decrease by 1 to get array index
+      const userAttempt = attempt - 1;
+
+      allAttempts.forEach((val, idx) => {
+        let remoteVal = Number(val.toString());
+        if (idx === userAttempt) remoteVal += 1;
+        if (idx >= userAttempt) sum_upto_user_attempt += remoteVal;
+        sum_all_attempts += remoteVal;
+      });
+
+      percentile = Math.ceil((sum_upto_user_attempt * 100) / sum_all_attempts) - 1;
+    })
     .catch((e: any) => console.log(e));
 
   return percentile;
@@ -71,7 +97,8 @@ export async function callZkPercentile(attempt: number): Promise<number> {
 // fetch secret hidden word of the day from oracle server
 async function getOracleData() {
   try {
-    const res = await fetch(ORACLE_ENDPOINT);
+    const date = new Date().toJSON().slice(0, 10);
+    const res = await fetch(`${ORACLE_ENDPOINT}/${date}`);
     const data = await res.json();
     const secret = data.data.wordle;
     secretWord.set(secret.toUpperCase());

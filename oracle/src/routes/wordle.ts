@@ -65,8 +65,8 @@ export async function getHandler(ctx: ParameterizedContext) {
   try {
     let { date } = ctx.params;
 
-    // set today's date if date is not specified
-    if (!date) date = new Date().toJSON().slice(0, 10);
+    // set today's date in UTC if date is not specified
+    if (!date) date = new Date(new Date().toUTCString()).toJSON().slice(0, 10);
 
     ctx.body = await getSignedWordle(date);
   } catch (e) {

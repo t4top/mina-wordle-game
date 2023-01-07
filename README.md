@@ -57,9 +57,9 @@ npm install
 
 3. Follow the build steps under each part
 
-- [ui](ui/)
-- [contracts](contracts/)
 - [oracle](oracle/)
+- [contracts](contracts/)
+- [ui](ui/)
 
 ## License
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onDestroy, onMount } from "svelte";
   import { keyPressed } from "$lib/gamelogic/wordle";
   import { precondition, checkPreConditions } from "$lib/components/wallet/user_store";
   import Key from "./key.svelte";
@@ -7,18 +7,20 @@
   const keys: string[][] = [
     ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
     ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
-    ["ENTER", "Z", "X", "C", "V", "B", "N", "M", "DELETE"]
+    ["ENTER", "Z", "X", "C", "V", "B", "N", "M", "BACKSPACE"]
   ];
 
-  onMount(() => {
-    document.addEventListener("keydown", e => {
-      if ($precondition) {
-        const key = e.key.toUpperCase();
-        if (keys.flat().includes(key)) keyPressed(key);
-      } else {
-        checkPreConditions();
-      }
-    });
+  function handleKeyPressed(e: KeyboardEvent) {
+    const key = e.key.toUpperCase();
+    if (keys.flat().includes(key)) {
+      $precondition ? keyPressed(key) : checkPreConditions();
+    }
+  }
+
+  onMount(() => document.addEventListener("keydown", handleKeyPressed));
+
+  onDestroy(() => {
+    if (typeof document !== "undefined") document.removeEventListener("keydown", handleKeyPressed);
   });
 </script>
 

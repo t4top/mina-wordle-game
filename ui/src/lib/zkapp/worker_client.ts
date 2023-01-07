@@ -37,6 +37,12 @@ export default class ZkappWorkerClient {
     return UInt64.fromJSON(JSON.parse(result as string));
   }
 
+  async getAllAttempts(): Promise<Array<Field>> {
+    const result = await this._call("getAllAttempts", {});
+    const allAttempts = JSON.parse(result as string);
+    return allAttempts.map((v: string) => Field.fromJSON(v));
+  }
+
   initZkappInstance(publicKey58: string) {
     return this._call("initZkappInstance", { publicKey58 });
   }

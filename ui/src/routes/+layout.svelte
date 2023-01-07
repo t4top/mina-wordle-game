@@ -21,9 +21,10 @@
   <main><slot /></main>
 </div>
 
-<div class="rotate">
+<div class="warning">
   <p>Oh no! We can't fit everything on your screen.</p>
-  <p><b>Please rotate your device.</b></p>
+  <p><b>Please rotate your device or</b></p>
+  <p><b>increase your screen size.</b></p>
 </div>
 
 <style lang="stylus">
@@ -54,15 +55,15 @@
     height calc(90vh - 6rem)
     max-height $game_max_height
 
-  .rotate
+  .warning
     display none
 
-  $mh = "only screen and (orientation: landscape) and (max-height: " + $game_min_height + ")"
+  $mh = "only screen and (orientation: landscape) and (any-hover: none) and (max-height: " + $game_min_height + ")"
   @media $mh
     .page
       display none
     
-    .rotate
+    .warning
       height 100vh
       display flex
       flex-direction column
@@ -71,5 +72,6 @@
 
       p
         font-size 1.7rem
+        text-align center
 
 </style>

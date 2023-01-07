@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Wordle inspired game for Mina Protocol",
   "scripts": {
-    "postinstall": "(cd oracle && npm install) && (cd ui && npm install) && (cd contracts && npm install)",
+    "postinstall": "(cd oracle && npm install) && (cd contracts && npm install) && (cd ui && npm install)",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

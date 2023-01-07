@@ -13,12 +13,11 @@ const emptyUser = {
 };
 
 function createUserStore() {
-  const { subscribe, set, update } = writable(emptyUser);
+  const { subscribe, update } = writable(emptyUser);
 
   return {
     subscribe,
-    set: (value: any) => update(old => Object.assign({}, old, value)),
-    reset: () => set(emptyUser)
+    set: (value: any) => update(old => Object.assign({}, old, value))
   };
 }
 
