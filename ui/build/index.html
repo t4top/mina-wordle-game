@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#" xmlns:og="https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="content-security-policy" content="">
+		<link href="./_app/immutable/assets/_layout-999cc661.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/user_store-0ff9fd81.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/_page-4a4f5751.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/start-8fcafbf5.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index-0196de85.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons-6a7112c0.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper-41c905a7.js">
+		<link rel="modulepreload" href="./_app/immutable/components/pages/_layout.svelte-da352bf6.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/user_store-c6dac21f.js">
+		<link rel="modulepreload" href="./_app/immutable/components/pages/_page.svelte-fb9f49f8.js"><title>Mina Wordle</title><!-- HEAD_svelte-kkbgip_START --><meta name="buildtime" content="2023-01-08T22:43:52.460Z"><link rel="icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="manifest" href="/site.webmanifest"><meta name="theme-color" content="#ffffff"><meta property="og:site_name" content="Mina Wordle"><meta property="og:type" content="website"><meta property="og:locale" content="en"><meta property="og:title" content="Mina Wordle"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Mina Wordle"><meta name="canonical" content="https://mina-wordle.juxdan.io/"><meta property="og:url" content="https://mina-wordle.juxdan.io/"><meta name="keywords" content="Mina, Wordle, zkApp, SnarkyJs, zkIgnite"><meta property="og:image" content="https://mina-wordle.juxdan.io/android-chrome-192x192.png"><meta property="twitter:image" content="https://mina-wordle.juxdan.io/android-chrome-192x192.png"><meta name="description" content="A wordle game to demonstrate zkApp smart contract and oracle using Mina Protocol SnarkyJS"><meta property="og:description" content="A wordle game to demonstrate zkApp smart contract and oracle using Mina Protocol SnarkyJS"><meta property="twitter:description" content="A wordle game to demonstrate zkApp smart contract and oracle using Mina Protocol SnarkyJS"><!-- HEAD_svelte-kkbgip_END -->
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents">
+
+
+
+<svg class="svelte-uc37uv"><symbol id="icon_moon" viewBox="0 0 16 16"><path d="M7.067 3.087a5 5 0 005.466 7.026 5 5 0 11-5.466-7.026z"></path></symbol><symbol id="icon_sun" viewBox="0 0 16 16"><path d="M7.5 11.465a3.482 3.482 0 01-1.596-.662L4.11 12.596a.5.5 0 01-.707-.707l1.793-1.793A3.482 3.482 0 014.535 8.5H2a.5.5 0 010-1h2.535a3.482 3.482 0 01.662-1.596L3.404 4.11a.5.5 0 01.707-.707l1.793 1.793A3.482 3.482 0 017.5 4.535V2a.5.5 0 011 0v2.535a3.482 3.482 0 011.596.662l1.793-1.793a.5.5 0 01.707.707l-1.793 1.793c.343.458.577 1.003.662 1.596H14a.5.5 0 110 1h-2.535a3.482 3.482 0 01-.662 1.596l1.793 1.793a.5.5 0 01-.707.707l-1.793-1.793a3.482 3.482 0 01-1.596.662V14a.5.5 0 11-1 0v-2.535z"></path></symbol><symbol id="icon_help" viewBox="0 0 24 24"><path d="M11,18H13V16H11V18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,6A4,4 0 0,0 8,10H10A2,2 0 0,1 12,8A2,2 0 0,1 14,10C14,12 11,11.75 11,15H13C13,12.75 16,12.5 16,10A4,4 0 0,0 12,6Z"></path></symbol><symbol id="icon_barchart" viewBox="0 0 24 24"><path d="M3,22V8H7V22H3M10,22V2H14V22H10M17,22V14H21V22H17Z"></path></symbol><symbol id="icon_wallet" viewBox="0 0 24 24"><path d="M5,3C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V16.72C21.59,16.37 22,15.74 22,15V9C22,8.26 21.59,7.63 21,7.28V5A2,2 0 0,0 19,3H5M5,5H19V7H13A2,2 0 0,0 11,9V15A2,2 0 0,0 13,17H19V19H5V5M13,9H20V15H13V9M16,10.5A1.5,1.5 0 0,0 14.5,12A1.5,1.5 0 0,0 16,13.5A1.5,1.5 0 0,0 17.5,12A1.5,1.5 0 0,0 16,10.5Z"></path></symbol><symbol id="icon_backspace" viewBox="0 0 24 24"><path d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7.07L2.4 12l4.66-7H22v14zm-11.59-2L14 13.41 17.59 17 19 15.59 15.41 12 19 8.41 17.59 7 14 10.59 10.41 7 9 8.41 12.59 12 9 15.59z"></path></symbol></svg>
+
+
+
+<div class="page svelte-1fdxuah"><div class="header_container svelte-1fdxuah"><header class="svelte-1fdxuah"><div class="header svelte-1konqie"><div class="title svelte-1konqie">Mina Wordle</div>
+  <div class="submenu svelte-1konqie"><button class="icon_button"><svg class=" svelte-gkap5o" fill="currentColor"><title>Help</title><use xlink:href="#icon_help" href="#icon_help"></use></svg></button>
+
+<div class="overlay svelte-89drzg"><div class="overlay_container"><button class="closeBtn">x</button>
+      <section><h1>Mina Wordle</h1>
+    <h3>A wordle-clone game to showcase Mina&#39;s zkApp.</h3>
+    <ul><li>Powered by SnarkyJs and zk oracle backend.</li>
+      <li>Created as an entry for the zkIgnite, Cohort 0 challenge.</li></ul></section>
+  <section><h2>How To Play</h2>
+    <ul><li>Connect Mina
+        <a href="https://www.aurowallet.com/" title="Auro Wallet" target="_blank" rel="noopener noreferrer">Auro Wallet
+        </a> on Berkeley Testnet.
+      </li>
+      <li>Fund the wallet with free testnet Mina from the
+        <a href="https://faucet.minaprotocol.com/" title="Testnet Mina Faucet" target="_blank" rel="noopener noreferrer">faucet
+        </a>.
+      </li>
+      <li>Guess the Wordle of the day in 6 tries.</li>
+      <li>Each guess must be a valid 5-letter word.</li>
+      <li>The color of the tiles will change to show how close your guess was to the word.</li>
+      <li><span class="correct svelte-cwsstq">Green</span> backcolor means the letter is in the word and in the correct spot.</li>
+      <li><span class="present svelte-cwsstq">Yellow</span> backcolor means the letter is in the word but in the wrong spot.</li>
+      <li><span class="absent svelte-cwsstq">Gray</span> backcolor means the letter is not in the word in any spot.</li></ul>
+    <h3>👍 Good Luck! 🍀</h3></section></div></div>
+
+
+    <button class="icon_button" disabled><svg class=" svelte-gkap5o" fill="currentColor"><title>Game Score</title><use xlink:href="#icon_barchart" href="#icon_barchart"></use></svg></button>
+
+
+    <button class="icon_button"></button></div>
+</div></header></div>
+  <div class="account_status svelte-1fdxuah"><p>Loading...</p>
+
+<div class="overlay svelte-1xb282n"></div></div>
+  <main class="svelte-1fdxuah"><div class="svelte-1mbh2i8"><div class="board svelte-t0a2dh"><div class="grid svelte-t0a2dh" style="--rows: 6; --cols: 5;"><div class="row svelte-t0a2dh"><div class="svelte-wil13f">
+</div><div class="svelte-wil13f" style="--delay: 100;">
+</div><div class="svelte-wil13f" style="--delay: 200;">
+</div><div class="svelte-wil13f" style="--delay: 300;">
+</div><div class="svelte-wil13f" style="--delay: 400;">
+</div>
+      </div><div class="row svelte-t0a2dh"><div class="svelte-wil13f">
+</div><div class="svelte-wil13f" style="--delay: 100;">
+</div><div class="svelte-wil13f" style="--delay: 200;">
+</div><div class="svelte-wil13f" style="--delay: 300;">
+</div><div class="svelte-wil13f" style="--delay: 400;">
+</div>
+      </div><div class="row svelte-t0a2dh"><div class="svelte-wil13f">
+</div><div class="svelte-wil13f" style="--delay: 100;">
+</div><div class="svelte-wil13f" style="--delay: 200;">
+</div><div class="svelte-wil13f" style="--delay: 300;">
+</div><div class="svelte-wil13f" style="--delay: 400;">
+</div>
+      </div><div class="row svelte-t0a2dh"><div class="svelte-wil13f">
+</div><div class="svelte-wil13f" style="--delay: 100;">
+</div><div class="svelte-wil13f" style="--delay: 200;">
+</div><div class="svelte-wil13f" style="--delay: 300;">
+</div><div class="svelte-wil13f" style="--delay: 400;">
+</div>
+      </div><div class="row svelte-t0a2dh"><div class="svelte-wil13f">
+</div><div class="svelte-wil13f" style="--delay: 100;">
+</div><div class="svelte-wil13f" style="--delay: 200;">
+</div><div class="svelte-wil13f" style="--delay: 300;">
+</div><div class="svelte-wil13f" style="--delay: 400;">
+</div>
+      </div><div class="row svelte-t0a2dh"><div class="svelte-wil13f">
+</div><div class="svelte-wil13f" style="--delay: 100;">
+</div><div class="svelte-wil13f" style="--delay: 200;">
+</div><div class="svelte-wil13f" style="--delay: 300;">
+</div><div class="svelte-wil13f" style="--delay: 400;">
+</div>
+      </div></div>
+</div>
+  <div><div class="row svelte-1v8gspc"><button type="button" class="svelte-1mhjt5v">Q
+</button><button type="button" class="svelte-1mhjt5v">W
+</button><button type="button" class="svelte-1mhjt5v">E
+</button><button type="button" class="svelte-1mhjt5v">R
+</button><button type="button" class="svelte-1mhjt5v">T
+</button><button type="button" class="svelte-1mhjt5v">Y
+</button><button type="button" class="svelte-1mhjt5v">U
+</button><button type="button" class="svelte-1mhjt5v">I
+</button><button type="button" class="svelte-1mhjt5v">O
+</button><button type="button" class="svelte-1mhjt5v">P
+</button>
+    </div><div class="row svelte-1v8gspc second_row"><button type="button" class="svelte-1mhjt5v">A
+</button><button type="button" class="svelte-1mhjt5v">S
+</button><button type="button" class="svelte-1mhjt5v">D
+</button><button type="button" class="svelte-1mhjt5v">F
+</button><button type="button" class="svelte-1mhjt5v">G
+</button><button type="button" class="svelte-1mhjt5v">H
+</button><button type="button" class="svelte-1mhjt5v">J
+</button><button type="button" class="svelte-1mhjt5v">K
+</button><button type="button" class="svelte-1mhjt5v">L
+</button>
+    </div><div class="row svelte-1v8gspc"><button type="button" class="svelte-1mhjt5v">ENTER
+</button><button type="button" class="svelte-1mhjt5v">Z
+</button><button type="button" class="svelte-1mhjt5v">X
+</button><button type="button" class="svelte-1mhjt5v">C
+</button><button type="button" class="svelte-1mhjt5v">V
+</button><button type="button" class="svelte-1mhjt5v">B
+</button><button type="button" class="svelte-1mhjt5v">N
+</button><button type="button" class="svelte-1mhjt5v">M
+</button><button type="button" class="svelte-1mhjt5v    backspace"><svg class=" svelte-gkap5o" fill="currentColor"><title>Backspace</title><use xlink:href="#icon_backspace" href="#icon_backspace"></use></svg>
+</button>
+    </div>
+</div>
+</div></main></div>
+
+<div class="warning svelte-1fdxuah"><p class="svelte-1fdxuah">Oh no! We can&#39;t fit everything on your screen.</p>
+  <p class="svelte-1fdxuah"><b>Please rotate your device or</b></p>
+  <p class="svelte-1fdxuah"><b>increase your screen size.</b></p>
+</div>
+
+
+		<script type="module" data-sveltekit-hydrate="1nvegq">
+			import { start } from "./_app/immutable/start-8fcafbf5.js";
+
+			start({
+				env: {},
+				paths: {"base":"","assets":""},
+				target: document.querySelector('[data-sveltekit-hydrate="1nvegq"]').parentNode,
+				version: "1673217821436",
+				hydrate: {
+					node_ids: [0, 2],
+					data: [{type:"data",data:null,uses:{}},null],
+					form: null
+				}
+			});
+		</script>
+	</div>
+  </body>
+</html>
