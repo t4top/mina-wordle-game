@@ -91,3 +91,10 @@ function createAnimation() {
 }
 
 export const animation = createAnimation();
+
+//--------------------------------------------------
+// helper function for number formatting
+
+export function zeroPad(num: number, places: number) {
+  return String(num).padStart(places, "0");
+}

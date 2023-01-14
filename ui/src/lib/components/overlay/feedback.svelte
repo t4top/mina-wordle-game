@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onDestroy, onMount } from "svelte";
   import Icon from "$lib/components/icons/icon.svelte";
-  import { userScore, secretWord } from "$lib/gamelogic/store";
+  import { userScore, secretWord, zeroPad } from "$lib/gamelogic/store";
   import Popup from "./popup.svelte";
 
   let showFeedback: boolean = false;
@@ -33,8 +33,6 @@
     userScore.setPercentile(percentile);
     isBusy = false;
   }
-
-  const zeroPad = (num: number, places: number) => String(num).padStart(places, "0");
 
   onMount(() => {
     const midnight = new Date();

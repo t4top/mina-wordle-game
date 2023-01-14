@@ -1,5 +1,5 @@
-import { secretWord } from "$lib/gamelogic/store";
 import ZkappWorkerClient from "$lib/zkapp/worker_client";
+import { secretWord, zeroPad } from "$lib/gamelogic/store";
 import { user, transactionFee } from "./user_store";
 
 const MINA_SUB_DECIMAL: number = 1e9;
@@ -97,8 +97,13 @@ export async function callZkPercentile(attempt: number): Promise<number> {
 // fetch secret hidden word of the day from oracle server
 async function getOracleData() {
   try {
-    const date = new Date().toJSON().slice(0, 10);
-    const res = await fetch(`${ORACLE_ENDPOINT}/${date}`);
+    const date = new Date();
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    const today = `${year}-${zeroPad(month, 2)}-${zeroPad(day, 2)}`;
+
+    const res = await fetch(`${ORACLE_ENDPOINT}/${today}`);
     const data = await res.json();
     const secret = data.data.wordle;
     secretWord.set(secret.toUpperCase());
