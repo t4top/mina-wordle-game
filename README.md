@@ -1,12 +1,19 @@
 # mina-wordle-game
 
+<p align="center">
+
+![Mina Wordle Game Screenshot](./ui/static/wordle_screenshot.png)
+
+</p>
+
 This is a Wordle inspired game for Mina Protocol. It is to demonstrate zkApp smart contract and oracle using SnarkyJs. It was created as an entry to the [zkIgnite Cohort 0](https://minaprotocol.com/blog/zkignite-cohort0) challenge.
 
 ## Demo
 
-A demo zkApp is hosted in below link. Please, visit the site.
+Find below deployed samples. Please, visit any of the sites.
 
 - [https://mina-wordle.juxdan.io/](https://mina-wordle.juxdan.io/)
+- [https://t4top.github.io/mina-wordle-game/](https://t4top.github.io/mina-wordle-game/)
 
 ## What is Wordle?
 
@@ -19,8 +26,6 @@ A Yellow feedback on a letter means that letter is present in the word but in wr
 A Gray feedback means the letter is not present at all in the word.
 
 ## How to Play
-
-![Mina Wordle Game Screenshot](./ui/static/wordle_screenshot.png)
 
 - Connect Mina Auro Wallet on Berkeley Testnet.
 - Fund the wallet with free testnet Mina from the faucet.
@@ -37,6 +42,7 @@ Below are some of the major features of this zkApp.
 - zkApp smart contract using SnarkyJs and deployed to Berkeley Testnet
 - Koa-powered Oracle server using Mina Signature to sign responses
 - Dark mode
+- UI made with SvelteKit
 
 ## How to build
 
