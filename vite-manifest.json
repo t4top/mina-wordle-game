@@ -17,28 +17,15 @@
       "_index-0196de85.js"
     ]
   },
-  ".svelte-kit/generated/nodes/1.js": {
-    "file": "_app/immutable/chunks/1-0683818e.js",
-    "src": ".svelte-kit/generated/nodes/1.js",
-    "isDynamicEntry": true,
-    "imports": [
-      "node_modules/@sveltejs/kit/src/runtime/components/error.svelte"
-    ]
+  "_index-0196de85.js": {
+    "file": "_app/immutable/chunks/index-0196de85.js"
   },
   ".svelte-kit/generated/nodes/0.js": {
-    "file": "_app/immutable/chunks/0-85ceca1d.js",
+    "file": "_app/immutable/chunks/0-6fd85e66.js",
     "src": ".svelte-kit/generated/nodes/0.js",
     "isDynamicEntry": true,
     "imports": [
       "src/routes/+layout.svelte"
-    ]
-  },
-  ".svelte-kit/generated/nodes/2.js": {
-    "file": "_app/immutable/chunks/2-6a712735.js",
-    "src": ".svelte-kit/generated/nodes/2.js",
-    "isDynamicEntry": true,
-    "imports": [
-      "src/routes/+page.svelte"
     ]
   },
   "node_modules/@sveltejs/kit/src/runtime/components/error.svelte": {
@@ -53,11 +40,24 @@
   "_preload-helper-41c905a7.js": {
     "file": "_app/immutable/chunks/preload-helper-41c905a7.js"
   },
-  "_index-0196de85.js": {
-    "file": "_app/immutable/chunks/index-0196de85.js"
+  ".svelte-kit/generated/nodes/1.js": {
+    "file": "_app/immutable/chunks/1-0683818e.js",
+    "src": ".svelte-kit/generated/nodes/1.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "node_modules/@sveltejs/kit/src/runtime/components/error.svelte"
+    ]
+  },
+  ".svelte-kit/generated/nodes/2.js": {
+    "file": "_app/immutable/chunks/2-6a712735.js",
+    "src": ".svelte-kit/generated/nodes/2.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/routes/+page.svelte"
+    ]
   },
   "node_modules/@sveltejs/kit/src/runtime/client/start.js": {
-    "file": "_app/immutable/start-916a798e.js",
+    "file": "_app/immutable/start-5c375972.js",
     "src": "node_modules/@sveltejs/kit/src/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -81,7 +81,7 @@
     ]
   },
   "src/routes/+layout.svelte": {
-    "file": "_app/immutable/components/pages/_layout.svelte-723b139b.js",
+    "file": "_app/immutable/components/pages/_layout.svelte-b9b519f8.js",
     "src": "src/routes/+layout.svelte",
     "isEntry": true,
     "imports": [
@@ -110,7 +110,7 @@
     ]
   },
   "src/lib/components/wallet/wallet.ts": {
-    "file": "_app/immutable/chunks/wallet-6bbadb61.js",
+    "file": "_app/immutable/chunks/wallet-20a39b1e.js",
     "src": "src/lib/components/wallet/wallet.ts",
     "isDynamicEntry": true,
     "imports": [
