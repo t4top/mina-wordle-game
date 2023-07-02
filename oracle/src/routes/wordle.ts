@@ -24,9 +24,6 @@ async function getSignedWordle(date: string) {
   // return locally cached response if available
   if (wordleCache.has(date)) return wordleCache.get(date);
 
-  // Wait for SnarkyJS to finish loading before we can do anything
-  await isReady;
-
   // get wordle of the specified date from backend oracle
   const { solution } = await fetchWordle(date);
 
