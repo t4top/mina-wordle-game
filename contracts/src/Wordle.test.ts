@@ -1,7 +1,5 @@
 import { Wordle } from './Wordle';
 import {
-  isReady,
-  shutdown,
   Mina,
   PrivateKey,
   PublicKey,
@@ -22,13 +20,13 @@ let proofsEnabled = false;
 function createLocalBlockchain() {
   const Local = Mina.LocalBlockchain({ proofsEnabled });
   Mina.setActiveInstance(Local);
-  return Local.testAccounts[0].privateKey;
+  return Local.testAccounts[0].publicKey;
 }
 
 async function localDeploy(
   zkAppInstance: Wordle,
   zkAppPrivatekey: PrivateKey,
-  deployerAccount: PrivateKey
+  deployerAccount: PublicKey
 ) {
   const txn = await Mina.transaction(deployerAccount, () => {
     AccountUpdate.fundNewAccount(deployerAccount);
@@ -41,12 +39,11 @@ async function localDeploy(
 }
 
 describe('Wordle', () => {
-  let deployerAccount: PrivateKey,
+  let deployerAccount: PublicKey,
     zkAppAddress: PublicKey,
     zkAppPrivateKey: PrivateKey;
 
   beforeAll(async () => {
-    await isReady;
     if (proofsEnabled) Wordle.compile();
   });
 
@@ -54,10 +51,6 @@ describe('Wordle', () => {
     deployerAccount = createLocalBlockchain();
     zkAppPrivateKey = PrivateKey.random();
     zkAppAddress = zkAppPrivateKey.toPublicKey();
-  });
-
-  afterAll(async () => {
-    setTimeout(shutdown, 0);
   });
 
   it('generates and deploys smart contract', async () => {
@@ -92,7 +85,7 @@ describe('Wordle', () => {
       await txn.send();
 
       const events = await zkAppInstance.fetchEvents();
-      const verifiedEventValue = events[0].event.toFields(null)[0];
+      const verifiedEventValue = events[0].event.data.toFields(null)[0];
       expect(verifiedEventValue).toEqual(Field(1));
     });
 
@@ -136,7 +129,7 @@ describe('Wordle', () => {
       await txn.send();
 
       const events = await zkAppInstance.fetchEvents();
-      const verifiedEventValue = events[0].event.toFields(null)[0];
+      const verifiedEventValue = events[0].event.data.toFields(null)[0];
       expect(verifiedEventValue).toEqual(Field(99));
     });
   });
