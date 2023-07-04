@@ -3,14 +3,6 @@ import { fetchAccount, PublicKey, Field, UInt64 } from "snarkyjs";
 import type { ZkappWorkerRequest, ZkappWorkerReponse, WorkerFunctions } from "./worker";
 
 export default class ZkappWorkerClient {
-  loadSnarkyJS() {
-    return this._call("loadSnarkyJS", {});
-  }
-
-  unloadSnarkyJS() {
-    return this._call("unloadSnarkyJS", {});
-  }
-
   setActiveInstanceToBerkeley() {
     return this._call("setActiveInstanceToBerkeley", {});
   }
@@ -90,7 +82,10 @@ export default class ZkappWorkerClient {
 
   nextId: number;
 
+  isReady: boolean;
+
   constructor() {
+    this.isReady = false;
     this.worker = new Worker(new URL("./worker.ts", import.meta.url), {
       type: "module"
     });
@@ -98,8 +93,12 @@ export default class ZkappWorkerClient {
     this.nextId = 0;
 
     this.worker.onmessage = (event: MessageEvent<ZkappWorkerReponse>) => {
-      this.promises[event.data.id].resolve(event.data.data);
-      delete this.promises[event.data.id];
+      this.isReady = true;
+      const { id, data } = event.data;
+      if (Object.hasOwn(this.promises, id)) {
+        this.promises[id].resolve(data);
+        delete this.promises[id];
+      }
     };
   }
 

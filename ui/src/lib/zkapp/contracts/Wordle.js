@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Field, Bool, SmartContract, state, State, method, Permissions, PublicKey, Signature, Struct, Circuit, Poseidon, } from 'snarkyjs';
+import { Field, Bool, SmartContract, state, State, method, Poseidon, Provable, PublicKey, Signature, Struct, } from 'snarkyjs';
 // The public key of our trusted wordle secret provider
 const ORACLE_PUBLIC_KEY = 'B62qqW3XwzR7K94C7HjiX37ni4yoeycGx5k7DriERn3d4QbuWenJRuB';
 export class AttemptArray extends Struct({
@@ -34,10 +34,6 @@ export class Wordle extends SmartContract {
     }
     init() {
         super.init();
-        this.setPermissions({
-            ...Permissions.default(),
-            editState: Permissions.proofOrSignature(),
-        });
         // initialize contract states
         this.oraclePublicKey.set(PublicKey.fromBase58(ORACLE_PUBLIC_KEY));
         this.allAttempts.set(AttemptArray.fill(0));
@@ -69,8 +65,8 @@ export class Wordle extends SmartContract {
     */
     percentile(userAttempt) {
         // check the number of attempt is within range 0 < x <= 6
-        userAttempt.assertGt(Field(0));
-        userAttempt.assertLte(Field(6));
+        userAttempt.assertGreaterThan(Field(0));
+        userAttempt.assertLessThanOrEqual(Field(6));
         // userAttempt is 1 origin, decrease by 1 to get array index
         let attempt = userAttempt.sub(Field(1));
         // get all attempts array from the Mina network
@@ -82,10 +78,10 @@ export class Wordle extends SmartContract {
         for (let i = 0; i < 6; i++) {
             // increment attempt position similar to user's
             let eqAttempt = attempt.equals(Field(i));
-            allAttempts.value[i] = Circuit.if(eqAttempt, allAttempts.value[i].add(Field(1)), allAttempts.value[i]);
+            allAttempts.value[i] = Provable.if(eqAttempt, allAttempts.value[i].add(Field(1)), allAttempts.value[i]);
             // sum attempts above and including user's
-            let gteAttempt = Field(i).gte(attempt);
-            sum_upto_user_attempt = Circuit.if(gteAttempt, sum_upto_user_attempt.add(allAttempts.value[i]), sum_upto_user_attempt);
+            let gteAttempt = Field(i).greaterThanOrEqual(attempt);
+            sum_upto_user_attempt = Provable.if(gteAttempt, sum_upto_user_attempt.add(allAttempts.value[i]), sum_upto_user_attempt);
             // sum up all positions
             sum_all_attempts = sum_all_attempts.add(allAttempts.value[i]);
         }

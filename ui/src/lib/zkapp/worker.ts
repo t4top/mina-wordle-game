@@ -1,4 +1,4 @@
-import { Mina, isReady, shutdown, PublicKey, fetchAccount, Encoding, Signature, Field } from "snarkyjs";
+import { Mina, PublicKey, fetchAccount, Encoding, Signature, Field } from "snarkyjs";
 import { Wordle } from "./contracts/Wordle";
 
 type Transaction = Awaited<ReturnType<typeof Mina.transaction>>;
@@ -14,14 +14,6 @@ const BERKELEY_ENDPOINT: string = "https://proxy.berkeley.minaexplorer.com/graph
 
 //--------------------------------------------------
 // functions definition
-
-async function loadSnarkyJS(args: {}) {
-  await isReady;
-}
-
-async function unloadSnarkyJS(args: {}) {
-  await shutdown();
-}
 
 async function setActiveInstanceToBerkeley(args: {}) {
   const Berkeley = Mina.Network(BERKELEY_ENDPOINT);
@@ -108,8 +100,6 @@ async function fetchEvent(args: {}) {
 // list of callable functions wrapping zkApp methods
 
 const functions = {
-  loadSnarkyJS,
-  unloadSnarkyJS,
   setActiveInstanceToBerkeley,
   loadContract,
   compileContract,
@@ -172,10 +162,13 @@ export type ZkappWorkerReponse = {
 
 onmessage = async (event: MessageEvent<ZkappWorkerRequest>) => {
   const returnData = await functions[event.data.fn](event.data.args);
-
-  const response: ZkappWorkerReponse = {
-    id: event.data.id,
-    data: returnData
-  };
-  postMessage(response);
+  sendMessage(event.data.id, returnData);
 };
+
+function sendMessage(id: number, data: any): void {
+  const response: ZkappWorkerReponse = { id, data };
+  postMessage(response);
+}
+
+// send 1st message as a ready handshake
+sendMessage(0, {});

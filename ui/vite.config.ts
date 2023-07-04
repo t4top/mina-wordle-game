@@ -28,7 +28,7 @@ const config: UserConfig = {
   },
   optimizeDeps: {
     esbuildOptions: {
-      target: "es2020"
+      target: "esnext"
     }
   }
 };

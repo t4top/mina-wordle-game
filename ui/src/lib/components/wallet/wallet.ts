@@ -17,6 +17,8 @@ const zkClient = new ZkappWorkerClient();
 
 // -------------------------------------------------------
 
+const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
 export async function init() {
   user.set({ hasWallet: !!mina });
 
@@ -27,7 +29,9 @@ export async function init() {
 
     // load SnarkyJs and set active network to Berkeley Testnet
     console.log("Loading SnarkyJS...");
-    await zkClient.loadSnarkyJS();
+    while (!zkClient.isReady) {
+      await sleep(500); // poll until module worker is fully ready to avoid race condition
+    }
     await zkClient.setActiveInstanceToBerkeley();
     await requestNetwork();
     console.log("done");
@@ -39,10 +43,6 @@ export async function init() {
       validateOracleData();
     }
   }
-}
-
-export async function cleanup() {
-  if (zkClient) await zkClient.unloadSnarkyJS();
 }
 
 export async function connect() {

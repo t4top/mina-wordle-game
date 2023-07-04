@@ -13,7 +13,7 @@
     "lint": "prettier --plugin-search-dir . --check . && eslint .",
     "format": "prettier --plugin-search-dir . --write .",
     "contract:build": "cd ../contracts/ && npm run build",
-    "contract:copy": "cp -rf ../contracts/build/src/* src/lib/zkapp/contracts/",
+    "contract:copy": "rm -rf src/lib/zkapp/contracts/* && cp -rf ../contracts/build/src/* src/lib/zkapp/contracts/",
     "prepare": "npm run contract:build && npm run contract:copy",
     "deploy": "npm run build && touch build/.nojekyll && git add -f build && git commit -m \"Deploy gh-pages\" && cd .. && git subtree push --prefix ui/build origin gh-pages"
   },
@@ -37,6 +37,6 @@
   },
   "type": "module",
   "dependencies": {
-    "snarkyjs": "^0.7.3"
+    "snarkyjs": "0.11.*"
   }
 }
