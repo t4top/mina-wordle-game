@@ -1,6 +1,6 @@
 {
   "name": "mina-wordle-game-oracle",
-  "version": "0.1.0",
+  "version": "0.4.0",
   "description": "An oracle server that returns the New York Times Wordle of the day with a Mina compatible signature scheme",
   "main": "build/index.js",
   "type": "module",
