@@ -1,5 +1,6 @@
 import { sveltekit } from "@sveltejs/kit/vite";
-import type { UserConfig, Plugin } from "vite";
+import { defineConfig } from "vite";
+import type { Plugin } from "vite";
 
 // Fix for
 // Uncaught (in promise) DOMException: Failed to execute 'postMessage' on 'Worker': SharedArrayBuffer transfer requires self.crossOriginIsolated.
@@ -18,19 +19,17 @@ const crossOriginIsolation: Plugin = {
   }
 };
 
-const config: UserConfig = {
+export default defineConfig({
   define: {
     "process.env.BUILDTIME": JSON.stringify(new Date().toISOString())
   },
   plugins: [crossOriginIsolation, sveltekit()],
   build: {
-    target: "es2020"
+    target: "es2022"
   },
   optimizeDeps: {
     esbuildOptions: {
       target: "esnext"
     }
   }
-};
-
-export default config;
+});
