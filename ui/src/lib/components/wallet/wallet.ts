@@ -1,4 +1,4 @@
-import ZkappWorkerClient from "$lib/zkapp/worker_client";
+import ZkappClient from "$lib/zkapp/zkapp_client";
 import { secretWord, zeroPad } from "$lib/gamelogic/store";
 import { user, transactionFee } from "./user_store";
 
@@ -13,11 +13,9 @@ const ZKAPP_CONTRACT_ADDRESS: string = "B62qo7TsbVEKU2q7md2upZuMwjEizuYcMy5t4FPd
 const WALLET_CONNECTED_BEFORE_FLAG: string = "wallet_connected_before";
 
 const mina = (window as any)?.mina;
-const zkClient = new ZkappWorkerClient();
+const zkClient = new ZkappClient();
 
 // -------------------------------------------------------
-
-const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 export async function init() {
   user.set({ hasWallet: !!mina });
@@ -29,10 +27,7 @@ export async function init() {
 
     // load SnarkyJs and set active network to Berkeley Testnet
     console.log("Loading SnarkyJS...");
-    while (!zkClient.isReady) {
-      await sleep(500); // poll until module worker is fully ready to avoid race condition
-    }
-    await zkClient.setActiveInstanceToBerkeley();
+    zkClient.setActiveInstanceToBerkeley();
     await requestNetwork();
     console.log("done");
 
