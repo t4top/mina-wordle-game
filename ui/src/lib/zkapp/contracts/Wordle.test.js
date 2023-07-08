@@ -1,5 +1,5 @@
 import { Wordle } from './Wordle';
-import { isReady, shutdown, Mina, PrivateKey, PublicKey, AccountUpdate, Signature, Encoding, Field, } from 'snarkyjs';
+import { Mina, PrivateKey, PublicKey, AccountUpdate, Signature, Encoding, Field, } from 'snarkyjs';
 // The public key of oracle trusted data provider
 const ORACLE_PUBLIC_KEY = 'B62qqW3XwzR7K94C7HjiX37ni4yoeycGx5k7DriERn3d4QbuWenJRuB';
 const ORACLE_ENDPOINT = 'https://mina-wordle-oracle.juxdan.io/wordle';
@@ -7,7 +7,7 @@ let proofsEnabled = false;
 function createLocalBlockchain() {
     const Local = Mina.LocalBlockchain({ proofsEnabled });
     Mina.setActiveInstance(Local);
-    return Local.testAccounts[0].privateKey;
+    return Local.testAccounts[0].publicKey;
 }
 async function localDeploy(zkAppInstance, zkAppPrivatekey, deployerAccount) {
     const txn = await Mina.transaction(deployerAccount, () => {
@@ -22,7 +22,6 @@ async function localDeploy(zkAppInstance, zkAppPrivatekey, deployerAccount) {
 describe('Wordle', () => {
     let deployerAccount, zkAppAddress, zkAppPrivateKey;
     beforeAll(async () => {
-        await isReady;
         if (proofsEnabled)
             Wordle.compile();
     });
@@ -30,9 +29,6 @@ describe('Wordle', () => {
         deployerAccount = createLocalBlockchain();
         zkAppPrivateKey = PrivateKey.random();
         zkAppAddress = zkAppPrivateKey.toPublicKey();
-    });
-    afterAll(async () => {
-        setTimeout(shutdown, 0);
     });
     it('generates and deploys smart contract', async () => {
         const zkAppInstance = new Wordle(zkAppAddress);
@@ -57,7 +53,7 @@ describe('Wordle', () => {
             await txn.prove();
             await txn.send();
             const events = await zkAppInstance.fetchEvents();
-            const verifiedEventValue = events[0].event.toFields(null)[0];
+            const verifiedEventValue = events[0].event.data.toFields(null)[0];
             expect(verifiedEventValue).toEqual(Field(1));
         });
         it('throws an error since provided signature is invalid', async () => {
@@ -89,7 +85,7 @@ describe('Wordle', () => {
             await txn.prove();
             await txn.send();
             const events = await zkAppInstance.fetchEvents();
-            const verifiedEventValue = events[0].event.toFields(null)[0];
+            const verifiedEventValue = events[0].event.data.toFields(null)[0];
             expect(verifiedEventValue).toEqual(Field(99));
         });
     });

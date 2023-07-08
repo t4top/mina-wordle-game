@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { onMount, onDestroy } from "svelte";
+  import { onMount } from "svelte";
   import Icon from "$lib/components/icons/icon.svelte";
   import { user, precondition, checkPreConditions } from "./user_store";
+  import { onClick } from "../../actions/on_click";
 
-  let wallet: { init: any; cleanup: any; connect: () => Promise<void> };
+  let wallet: { init: any; connect: () => Promise<void> };
 
   let initialized: boolean = false;
   let isBusy: boolean = false;
@@ -12,10 +13,6 @@
     wallet = await import("./wallet");
     await wallet.init();
     initialized = true;
-  });
-
-  onDestroy(async () => {
-    await wallet?.cleanup();
   });
 
   function shortenPublicKeyBase58(publicKey58: string): string {
@@ -51,7 +48,7 @@
 {/if}
 
 {#if !$precondition}
-  <div class="overlay" on:click={checkPreConditions} on:keydown={checkPreConditions} />
+  <div class="overlay" use:onClick={checkPreConditions} />
 {/if}
 
 <style lang="stylus">

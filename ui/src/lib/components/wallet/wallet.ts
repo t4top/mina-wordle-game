@@ -1,4 +1,4 @@
-import ZkappWorkerClient from "$lib/zkapp/worker_client";
+import ZkappClient from "$lib/zkapp/zkapp_client";
 import { secretWord, zeroPad } from "$lib/gamelogic/store";
 import { user, transactionFee } from "./user_store";
 
@@ -13,7 +13,7 @@ const ZKAPP_CONTRACT_ADDRESS: string = "B62qo7TsbVEKU2q7md2upZuMwjEizuYcMy5t4FPd
 const WALLET_CONNECTED_BEFORE_FLAG: string = "wallet_connected_before";
 
 const mina = (window as any)?.mina;
-const zkClient = new ZkappWorkerClient();
+const zkClient = new ZkappClient();
 
 // -------------------------------------------------------
 
@@ -27,8 +27,7 @@ export async function init() {
 
     // load SnarkyJs and set active network to Berkeley Testnet
     console.log("Loading SnarkyJS...");
-    await zkClient.loadSnarkyJS();
-    await zkClient.setActiveInstanceToBerkeley();
+    zkClient.setActiveInstanceToBerkeley();
     await requestNetwork();
     console.log("done");
 
@@ -39,10 +38,6 @@ export async function init() {
       validateOracleData();
     }
   }
-}
-
-export async function cleanup() {
-  if (zkClient) await zkClient.unloadSnarkyJS();
 }
 
 export async function connect() {

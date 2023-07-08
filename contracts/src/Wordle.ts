@@ -5,12 +5,11 @@ import {
   state,
   State,
   method,
-  Permissions,
+  Poseidon,
+  Provable,
   PublicKey,
   Signature,
   Struct,
-  Circuit,
-  Poseidon,
 } from 'snarkyjs';
 
 // The public key of our trusted wordle secret provider
@@ -42,10 +41,6 @@ export class Wordle extends SmartContract {
 
   init() {
     super.init();
-    this.setPermissions({
-      ...Permissions.default(),
-      editState: Permissions.proofOrSignature(),
-    });
 
     // initialize contract states
     this.oraclePublicKey.set(PublicKey.fromBase58(ORACLE_PUBLIC_KEY));
@@ -82,8 +77,8 @@ export class Wordle extends SmartContract {
   */
   @method percentile(userAttempt: Field) {
     // check the number of attempt is within range 0 < x <= 6
-    userAttempt.assertGt(Field(0));
-    userAttempt.assertLte(Field(6));
+    userAttempt.assertGreaterThan(Field(0));
+    userAttempt.assertLessThanOrEqual(Field(6));
 
     // userAttempt is 1 origin, decrease by 1 to get array index
     let attempt = userAttempt.sub(Field(1));
@@ -100,16 +95,16 @@ export class Wordle extends SmartContract {
       // increment attempt position similar to user's
       let eqAttempt = attempt.equals(Field(i));
 
-      allAttempts.value[i] = Circuit.if(
+      allAttempts.value[i] = Provable.if(
         eqAttempt,
         allAttempts.value[i].add(Field(1)),
         allAttempts.value[i]
       );
 
       // sum attempts above and including user's
-      let gteAttempt = Field(i).gte(attempt);
+      let gteAttempt = Field(i).greaterThanOrEqual(attempt);
 
-      sum_upto_user_attempt = Circuit.if(
+      sum_upto_user_attempt = Provable.if(
         gteAttempt,
         sum_upto_user_attempt.add(allAttempts.value[i]),
         sum_upto_user_attempt

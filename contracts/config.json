@@ -1,9 +1,11 @@
 {
   "version": 1,
-  "networks": {
+  "deployAliases": {
     "berkeley": {
       "url": "https://proxy.berkeley.minaexplorer.com/graphql",
       "keyPath": "keys/berkeley.json",
+      "feepayerKeyPath": "keys/berkeley.json",
+      "feepayerAlias": "berkeley",
       "fee": "0.1",
       "smartContract": "Wordle"
     }
