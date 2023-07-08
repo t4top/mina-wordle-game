@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { clickOutside } from "../../actions/click_outside";
+
   export let show: boolean = false;
 
   function close() {
@@ -7,8 +9,8 @@
 </script>
 
 {#if show}
-  <div class="overlay" on:click={close} on:keydown={close}>
-    <div class="overlay_container" on:click|stopPropagation={() => {}} on:keydown|stopPropagation={() => {}}>
+  <div class="overlay">
+    <div class="overlay_container" use:clickOutside={close}>
       <button class="closeBtn" on:click={close}>x</button>
       <slot />
     </div>
