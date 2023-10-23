@@ -2,7 +2,7 @@ import type { ParameterizedContext } from "koa";
 
 import axios from "axios";
 import * as dotenv from "dotenv";
-import { isReady, PrivateKey, Signature, Encoding } from "snarkyjs";
+import { PrivateKey, Signature, Encoding } from "o1js";
 
 dotenv.config();
 

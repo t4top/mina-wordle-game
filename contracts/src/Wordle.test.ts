@@ -7,7 +7,7 @@ import {
   Signature,
   Encoding,
   Field,
-} from 'snarkyjs';
+} from 'o1js';
 
 // The public key of oracle trusted data provider
 const ORACLE_PUBLIC_KEY =

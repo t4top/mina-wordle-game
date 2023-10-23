@@ -1,4 +1,4 @@
-import { Mina, PublicKey, fetchAccount, Encoding, Signature, Field, UInt64 } from "snarkyjs";
+import { Mina, PublicKey, fetchAccount, Encoding, Signature, Field, UInt64 } from "o1js";
 import { Wordle } from "./contracts/Wordle";
 
 type Transaction = Awaited<ReturnType<typeof Mina.transaction>>;

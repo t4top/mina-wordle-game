@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Field, Bool, SmartContract, state, State, method, Poseidon, Provable, PublicKey, Signature, Struct, } from 'snarkyjs';
+import { Field, Bool, SmartContract, state, State, method, Poseidon, Provable, PublicKey, Signature, Struct, } from 'o1js';
 // The public key of our trusted wordle secret provider
 const ORACLE_PUBLIC_KEY = 'B62qqW3XwzR7K94C7HjiX37ni4yoeycGx5k7DriERn3d4QbuWenJRuB';
 export class AttemptArray extends Struct({
