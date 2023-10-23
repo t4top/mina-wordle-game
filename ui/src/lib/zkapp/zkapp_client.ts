@@ -114,7 +114,7 @@ export default class ZkappClient {
   async fetchEvent(): Promise<Field> {
     let eventValue = Field(60);
 
-    // fetchEvents() is not yet implemented in SnarkyJs for remote blockchain.
+    // fetchEvents() is not yet implemented in o1js for remote blockchain.
     // I will skip below code and just return Field(60) for now
     if (false) {
       const events = await this.zkapp!.fetchEvents();
