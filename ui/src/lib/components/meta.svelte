@@ -15,19 +15,19 @@
   <meta property="twitter:title" content="Mina Wordle" />
   <meta name="canonical" content="https://mina-wordle.juxdan.io/" />
   <meta property="og:url" content="https://mina-wordle.juxdan.io/" />
-  <meta name="keywords" content="Mina, Wordle, zkApp, SnarkyJs, zkIgnite" />
+  <meta name="keywords" content="Mina, Wordle, zkApp, o1js, zkIgnite" />
   <meta property="og:image" content="https://mina-wordle.juxdan.io/android-chrome-192x192.png" />
   <meta property="twitter:image" content="https://mina-wordle.juxdan.io/android-chrome-192x192.png" />
   <meta
     name="description"
-    content="A wordle game to demonstrate zkApp smart contract and oracle using Mina Protocol SnarkyJS"
+    content="A wordle game to demonstrate zkApp smart contract and oracle using Mina Protocol o1js"
   />
   <meta
     property="og:description"
-    content="A wordle game to demonstrate zkApp smart contract and oracle using Mina Protocol SnarkyJS"
+    content="A wordle game to demonstrate zkApp smart contract and oracle using Mina Protocol o1js"
   />
   <meta
     property="twitter:description"
-    content="A wordle game to demonstrate zkApp smart contract and oracle using Mina Protocol SnarkyJS"
+    content="A wordle game to demonstrate zkApp smart contract and oracle using Mina Protocol o1js"
   />
 </svelte:head>

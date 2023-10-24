@@ -6,7 +6,7 @@
 
 </p>
 
-This is a Wordle inspired game for Mina Protocol. It is to demonstrate zkApp smart contract and oracle using SnarkyJs. It was created as an entry to the [zkIgnite Cohort 0](https://minaprotocol.com/blog/zkignite-cohort0) challenge.
+This is a Wordle inspired game for Mina Protocol. It is to demonstrate zkApp smart contract and oracle using o1js. It was created as an entry to the [zkIgnite Cohort 0](https://minaprotocol.com/blog/zkignite-cohort0) challenge.
 
 ## Demo
 
@@ -39,7 +39,7 @@ A Gray feedback means the letter is not present at all in the word.
 Below are some of the major features of this zkApp.
 
 - Realistic clone of the popular Wordle game
-- zkApp smart contract using SnarkyJs and deployed to Berkeley Testnet
+- zkApp smart contract using o1js and deployed to Berkeley Testnet
 - Koa-powered Oracle server using Mina Signature to sign responses
 - Dark mode
 - UI made with SvelteKit

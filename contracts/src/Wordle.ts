@@ -10,7 +10,7 @@ import {
   PublicKey,
   Signature,
   Struct,
-} from 'snarkyjs';
+} from 'o1js';
 
 // The public key of our trusted wordle secret provider
 const ORACLE_PUBLIC_KEY =

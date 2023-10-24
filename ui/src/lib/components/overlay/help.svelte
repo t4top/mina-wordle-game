@@ -13,7 +13,7 @@
     <h1>Mina Wordle</h1>
     <h3>A wordle-clone game to showcase Mina's zkApp.</h3>
     <ul>
-      <li>Powered by SnarkyJs and zk oracle backend.</li>
+      <li>Powered by o1js and zk oracle backend.</li>
       <li>Created as an entry for the zkIgnite, Cohort 0 challenge.</li>
     </ul>
   </section>

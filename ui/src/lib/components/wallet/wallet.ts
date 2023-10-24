@@ -25,8 +25,8 @@ export async function init() {
     mina.on("chainChanged", handleChainChanged);
     mina.on("accountsChanged", handleAccountsChanged);
 
-    // load SnarkyJs and set active network to Berkeley Testnet
-    console.log("Loading SnarkyJS...");
+    // load o1js and set active network to Berkeley Testnet
+    console.log("Loading o1js...");
     zkClient.setActiveInstanceToBerkeley();
     await requestNetwork();
     console.log("done");
