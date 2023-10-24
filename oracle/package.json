@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/t4top/mina-wordle-game#readme",
   "peerDependencies": {
-    "o1js": "^0.13.1"
+    "o1js": "0.13.*"
   },
   "devDependencies": {
     "@types/koa": "^2.13.6",
